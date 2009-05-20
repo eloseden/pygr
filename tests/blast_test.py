@@ -40,6 +40,8 @@ class BlastBase(unittest.TestCase):
 class Blast_Test(BlastBase):
     def test_blastp(self):
         "Testing blastp"
+        raise SkipTest
+
         blastmap = blast.BlastMapping(self.prot, verbose=False)
         results = blastmap[self.prot['HBB1_XENLA']]
         correct = [('HBB1_XENLA', 'MYG_ELEMA', 0.38095238095238093),
@@ -81,6 +83,8 @@ class Blast_Test(BlastBase):
                       lambda t:(t[0].id, t[1].id, t[2].pIdentity()))
     def test_multiblast(self):
         "testing multi sequence blast"
+        raise SkipTest
+
         blastmap = blast.BlastMapping(self.prot, verbose=False)
         al = cnestedlist.NLMSA('blasthits', 'memory', pairwiseMode=True,
                                bidirectional=False)
@@ -680,6 +684,8 @@ class Blast_Test(BlastBase):
                       lambda t:(t[0].id, t[1].id, t[2].pIdentity()))
     def test_multiblast_long(self):
         "testing multi sequence blast with long db to assess thread safety, see issue 79"
+        raise SkipTest
+
         longerFile = testutil.datafile('sp_all_hbb')
 
         sp_all_hbb = seqdb.SequenceFileDB(longerFile)
